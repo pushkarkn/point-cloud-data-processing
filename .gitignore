@@ -1,0 +1,16 @@
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+
+# Point cloud datasets (do not commit raw data)
+data/*.ply
+
+# Generated artifacts and local outputs
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
