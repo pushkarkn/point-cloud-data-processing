@@ -62,34 +62,15 @@ Notes:
 
 ```mermaid
 flowchart TD
-   A[Start: Run main.py] --> B[Load PLY data]
-   B --> C[Extract features and labels]
-   C --> D[Sample up to max_points]
-   D --> E[Remove ultra-rare classes]
-   E --> F[Remap labels to contiguous IDs]
-   F --> G[Stratified split: Train/Val/Test]
-   G --> H[Normalize with train mean/std]
-   H --> I[Build DataLoaders]
-   I --> J[Initialize MLP model]
-   J --> K[Train loop]
-   K --> L[Compute train metrics]
-   L --> M[Validate on val set]
-   M --> N{Val improved?}
-   N -->|Yes| O[Save best model]
-   N -->|No| P[Increase patience counter]
-   O --> Q{Early stopping?}
-   P --> Q
-   Q -->|No| K
-   Q -->|Yes| R[Load best checkpoint]
-   R --> S[Test evaluation]
-   S --> T[Print accuracy, report, confusion matrix]
-   T --> U{Visualization enabled?}
-   U -->|Yes| V[Predict all sampled points]
-   V --> W[Render colored point cloud in Open3D]
-   U -->|No| X[Skip rendering]
-   W --> Y[Print optimization summary]
-   X --> Y
-   Y --> Z[End]
+   A[Load PLY dataset] --> B[Extract 8 features and labels]
+   B --> C[Sample points and filter rare classes]
+   C --> D[Stratified train/val/test split]
+   D --> E[Normalize features]
+   E --> F[Train PointMLP with AdamW]
+   F --> G[Validate, early stop, and save best model]
+   G --> H[Test evaluation]
+   H --> I[Report metrics and optimization gain]
+   I --> J[Optional Open3D visualization]
 ```
 
 ## 5. Environment Setup
