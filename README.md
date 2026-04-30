@@ -138,10 +138,26 @@ Suggested comparison fields:
 
 | Environment | CPU cores | Training data | Epochs | Test accuracy | Test loss | Notes |
 | --- | ---: | --- | ---: | ---: | ---: | --- |
-| Local machine | 8 | same split / subset |  |  |  | current implementation |
-| HPC server | 48 | full training set |  |  |  | reference run |
+| Local machine | 8 | same split / subset | 35 | ~0.85 | n/a | local 8-core run |
+| HPC server | 48 | full training set | 35 | 0.8889 | n/a | metrics from the provided HPC screenshot |
 
-If you want the difference to be visible in git history, the cleanest approach is to add the measured values here and then commit the README update. That way `git diff` shows the exact metric changes, and future readers can compare the environments directly.
+If you want the difference to be visible in git history, the cleanest approach is to keep these measured values here and commit the README update. That way `git diff` shows the exact metric changes, and future readers can compare the environments directly.
+
+Optimization summary outputs:
+
+```text
+Local machine (8 cores)
+Baseline Accuracy : 0.2989
+Current Accuracy  : ~0.85
+Absolute Gain     : +0.5511 (+55.11 percentage points)
+Relative Gain     : +184.36%
+
+HPC server (48 cores)
+Baseline Accuracy : 0.2989
+Current Accuracy  : 0.8889
+Absolute Gain     : +0.5899 (+58.99 percentage points)
+Relative Gain     : +197.37%
+```
 
 ## 8. Optimization Summary Output
 
@@ -154,10 +170,7 @@ At the end of each run, the script prints:
 
 Example interpretation:
 
-- Baseline: 0.2989
-- Current: 0.8535
-- Absolute gain: +0.5546 (55.46 percentage points)
-- Relative gain: +185.54%
+Use the table above for the actual 8-core local and 48-core HPC comparison values.
 
 ## 9. Suggested Git Workflow
 
